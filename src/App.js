@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import divider from './images/pattern-divider-desktop.svg'
+import dice from './images/icon-dice.svg'
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='adviseConteiner'>
+        <p className='titleText'>Advide #123</p>
+        <p className='adviceText'>"Drink a glass of water before meals."</p>
+
+        <div className='bottomContainer'>
+          <img alt='...' src={divider} />
+          <span className='diceContainer'>
+            <img alt='...' src={dice} />
+          </span>
+        </div>
+
+      </div>
     </div>
   );
 }
