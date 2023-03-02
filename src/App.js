@@ -1,15 +1,38 @@
 import './App.css';
 import divider from './images/pattern-divider-desktop.svg'
 import dice from './images/icon-dice.svg'
+import { useEffect, useState } from 'react';
+import { getAdvice } from './api/getAdvice';
+import {
+  useQuery,
+} from 'react-query'
 import { Prueba } from './prueba';
-import { useAdvice } from './Hooks/useAdvice';
 
 function App() {
-  const { data, isLoading, isFetching, refetch, isError } = useAdvice()
+  const { data, error, isError, isLoading, isSuccess, isFetching, refetch } = useQuery(['advice'], getAdvice)
+
+  /*   const [data, setData] = useState()
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setIsError] = useState(false)
+  
+  const refetch = () => {
+  
+      setIsLoading(true)
+      getAdvice()
+        .then(setData)
+        .catch(setIsError)
+        .finally(() => setIsLoading(false))
+    
+    }
+  
+    useEffect(() => {
+      refetch()
+    }, []) */
+
   const { advice, id } = data?.slip || { advice: "", id: "" }
-console.log(isFetching);
-  if(isError){
-    return <div>Hay un error</div>
+
+  if (error) {
+    return <div>{error.message}</div>
   }
 
   return (
